@@ -1,0 +1,23 @@
+{
+  "name": "protractor-utility-for-dalelotts-angular-date-time-picker",
+  "version": "1.0.0",
+  "description": "A simple protractor utility for automating picking time on dalelotts angular date time picker.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rushikesh/protractor-dalelotts-angular-bootstrap-datetimepicker"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "dalelotts",
+    "protractor",
+    "datetime",
+    "picker",
+    "angulardatetime",
+    "angular-bootstrap-datetimepicker"
+  ],
+  "author": "Rushi",
+  "license": "MIT"
+}
