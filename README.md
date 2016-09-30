@@ -1,6 +1,7 @@
 # protractor-dalelotts-angular-bootstrap-datetimepicker
 A simple protractor utility for automation of picking time on dalelotts angular date time picker.
-`var dtPicker = require('protractor-utility-for-dalelotts-angular-date-time-picker');
+```
+var dtPicker = require('protractor-utility-for-dalelotts-angular-date-time-picker');
 
 describe('Dalelotts date time picker', function () {
   beforeEach(function () {
@@ -19,4 +20,4 @@ describe('Dalelotts date time picker', function () {
     });
   });
 });
-`
+```
