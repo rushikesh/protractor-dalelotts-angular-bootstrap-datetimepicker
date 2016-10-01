@@ -1,6 +1,6 @@
 {
   "name": "protractor-utility-for-dalelotts-angular-date-time-picker",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "A simple protractor utility for automating picking time on dalelotts angular date time picker.",
   "main": "index.js",
   "repository": {
