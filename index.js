@@ -41,36 +41,45 @@ function pickDate (path, jsDateString) {
   // -End- Double Click on the switch element to arrive @ years selection
 
   // -Start- Determine how many times to click left/right icons to arrive @ provided year
-  var now = new Date();
-  var currentYear = now.getFullYear();
-  var startYear = +(('' + (currentYear / 10)).split('.')[0] + '0');
-  var endYear = startYear + 9;
-  var providedYear = dt.getFullYear();
-  var tmp = '';
-  var whichDirection = '';
-  if (startYear > providedYear) {
-    tmp = endYear - providedYear;
-    tmp = +(('' + (tmp / 10)).split('.')[0]);
-    whichDirection = leftArrowElement;
-  } else if (providedYear > endYear) {
-    tmp = providedYear - endYear;
-    tmp = +(('' + (tmp / 10)).split('.')[0]);
-    tmp = tmp + 1;
-    whichDirection = rightArrowElement;
-  }
-  // -End- Determine how many times to click left/right icons to arrive @ year
+  var dtrange = '';
+  switchElement.getText().then(function (val) {
+    console.log(val);
+    dtrange = val;
+  });
 
-  // Click through either the left or right arrow to arrive @ the provided year on the UI
-  for (var i = 0; i < tmp; i++) {
-    whichDirection.click();
-  }
+  // Waiting for above promise to resolve
+  protractor.promise.controlFlow().execute(function () {
+    // Splitting the date range to get start and end years
+    var currentYear = dtrange.split('-');
+    var startYear = currentYear[0];
+    var endYear = currentYear[1];
+    var providedYear = dt.getFullYear();
+    var tmp = '';
+    var whichDirection = '';
+    if (startYear > providedYear) {
+      tmp = endYear - providedYear;
+      tmp = +(('' + (tmp / 10)).split('.')[0]);
+      whichDirection = leftArrowElement;
+    } else if (providedYear > endYear) {
+      tmp = providedYear - endYear;
+      tmp = +(('' + (tmp / 10)).split('.')[0]);
+      tmp = tmp + 1;
+      whichDirection = rightArrowElement;
+    }
+    // -End- Determine how many times to click left/right icons to arrive @ year
 
-  // Click on year,month,day,hours,minutes
-  clickIfElemPresent(yearElement);
-  clickIfElemPresent(monthElement);
-  clickIfElemPresent(dayElement);
-  clickIfElemPresent(hourElement);
-  clickIfElemPresent(minuteElement);
+    // Click through either the left or right arrow to arrive @ the provided year on the UI
+    for (var i = 0; i < tmp; i++) {
+      whichDirection.click();
+    }
+
+    // Click on year,month,day,hours,minutes
+    clickIfElemPresent(yearElement);
+    clickIfElemPresent(monthElement);
+    clickIfElemPresent(dayElement);
+    clickIfElemPresent(hourElement);
+    clickIfElemPresent(minuteElement);
+  });
 }
 
 /**
