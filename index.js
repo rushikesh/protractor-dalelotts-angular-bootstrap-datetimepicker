@@ -1,4 +1,10 @@
-function pickDate (path, jsDateString) {
+/**
+ * main function that does all the magic.
+ * @param {string} parent -- xpath of Parent element from which the calendar dropdown appears
+ * @param {string} jsDateString -- This should be a valid js date string
+ * @param {string} [triggerElement] -- xpath of Optional triggerElement that would trigger the dropdown.
+ */
+function pickDate (parent, jsDateString, triggerElement) {
   // Convert the provided date string into date object
   var dt = new Date(jsDateString);
 
@@ -18,11 +24,16 @@ function pickDate (path, jsDateString) {
   // Months array
   var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-  // Get the element from the xpath
-  var div = element(by.xpath(path));
+  // Get the parent element from the xpath
+  var div = element(by.xpath(parent));
 
-  // Clicking on parent element to get the dropdown
-  div.click();
+  // If triggerElement is passed, we perform a click on it else falls back to parent
+  if (triggerElement) {
+    element(by.xpath(triggerElement)).click();
+  } else {
+    // Clicking on parent element to get the dropdown
+    div.click();
+  }
 
   // -Start- Resolving the calendar elements based on the parent element
   var leftArrowElement = div.element(by.css('th.left'));
@@ -43,7 +54,6 @@ function pickDate (path, jsDateString) {
   // -Start- Determine how many times to click left/right icons to arrive @ provided year
   var dtrange = '';
   switchElement.getText().then(function (val) {
-    console.log(val);
     dtrange = val;
   });
 
