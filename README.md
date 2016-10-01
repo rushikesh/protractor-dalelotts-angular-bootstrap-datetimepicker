@@ -2,7 +2,7 @@
 A simple protractor utility for automation of picking time on dalelotts angular date time picker.
 
 #### Install ####
-You can install this package either with npm
+You can install this package with npm
 
 #### npm ####
 ```
