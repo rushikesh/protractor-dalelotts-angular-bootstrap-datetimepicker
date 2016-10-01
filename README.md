@@ -1,6 +1,16 @@
 # protractor-dalelotts-angular-bootstrap-datetimepicker
 A simple protractor utility for automation of picking time on dalelotts angular date time picker.
+
+#### Install ####
+You can install this package either with npm
+
+#### npm ####
 ```
+npm install --save protractor-utility-for-dalelotts-angular-date-time-picker
+```
+#### Usage ####
+
+```javascript
 var dtPicker = require('protractor-utility-for-dalelotts-angular-date-time-picker');
 
 describe('Dalelotts date time picker', function () {
