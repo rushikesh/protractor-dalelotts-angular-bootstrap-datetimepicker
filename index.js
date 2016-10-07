@@ -42,7 +42,7 @@ function pickDate (parent, jsDateString, triggerElement) {
   var yearElement = div.element(by.cssContainingText('.year', dt.getFullYear()));
   var monthElement = div.element(by.cssContainingText('.month', months[dt.getMonth()]));
   var dayElement = div.element(by.cssContainingText('td:not(.past)', dt.getDate()));
-  var hourElement = div.element(by.cssContainingText('.hour', hours + ':00 ' + ampm));
+  var hourElement = div.all(by.cssContainingText('.hour', hours + ':00 ' + ampm)).last();
   var minuteElement = div.element(by.cssContainingText('.minute', hours + ':' + minutes + ' ' + ampm));
   // -End- Resolving the calendar elements based on the parent element
 
