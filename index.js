@@ -42,7 +42,7 @@ function pickDate (parent, jsDateString, triggerElement) {
   var yearElement = div.element(by.cssContainingText('.year', dt.getFullYear()));
   var monthElement = div.element(by.cssContainingText('.month', months[dt.getMonth()]));
   var dayElement = div.element(by.cssContainingText('td:not(.past)', dt.getDate()));
-  var hourElement = div.all(by.cssContainingText('.hour', hours + ':00 ' + ampm)).last();
+  var hourElementArr = div.all(by.cssContainingText('.hour', hours + ':00 ' + ampm));
   var minuteElement = div.element(by.cssContainingText('.minute', hours + ':' + minutes + ' ' + ampm));
   // -End- Resolving the calendar elements based on the parent element
 
@@ -87,8 +87,18 @@ function pickDate (parent, jsDateString, triggerElement) {
     clickIfElemPresent(yearElement);
     clickIfElemPresent(monthElement);
     clickIfElemPresent(dayElement);
-    clickIfElemPresent(hourElement);
-    clickIfElemPresent(minuteElement);
+    var hourElement = hourElementArr.first();
+    hourElementArr.each(function (element, index) {
+      element.getText().then(function (text) {
+        if (text === hours + ':00 ' + ampm) {
+          hourElement = element;
+        }
+      });
+    });
+    protractor.promise.controlFlow().execute(function () {
+      clickIfElemPresent(hourElement);
+      clickIfElemPresent(minuteElement);
+    });
   });
 }
 
