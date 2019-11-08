@@ -1,12 +1,18 @@
 # protractor-dalelotts-angular-bootstrap-datetimepicker
 A simple protractor utility for automation of picking time on dalelotts angular date time picker.
 
+## Improved End-To-End Testing Support in v3.1.x 
+
+Inspired by this project, Dale Lotts made some changes to his angular-bootstrap-datetimepicker to improve end-to-end testing.
+
+Have a look at the [End-To-End Testing](https://github.com/dalelotts/angular-bootstrap-datetimepicker#end-to-end-e2e-testing-with-protractor) section in the read me. 
+
 #### Install ####
 You can install this package with npm
 
 #### npm ####
 ```
-npm install --save protractor-utility-for-dalelotts-angular-date-time-picker
+npm install --save-dev protractor-utility-for-dalelotts-angular-date-time-picker
 ```
 
 #### api ####
@@ -27,7 +33,7 @@ var dtPicker = require('protractor-utility-for-dalelotts-angular-date-time-picke
 
 describe('Dalelotts date time picker', function () {
   beforeEach(function () {
-    browser.get('https://dalelotts.github.io/angular-bootstrap-datetimepicker/');
+    browser.get('https://dalelotts.github.io/angularjs-bootstrap-datetimepicker/');
   });
 
   it('Date picker Dropdown', function () {
